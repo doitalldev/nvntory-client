@@ -1,6 +1,6 @@
 import React from 'react';
 import './MainHome.css';
-const heroimage = require('../images/hero1.jpg');
+const heroimage = require('../../images/hero1.jpg');
 const MainHome = () => {
   return (
     <main>

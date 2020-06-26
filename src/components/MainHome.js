@@ -1,11 +1,11 @@
 import React from 'react';
-import hero1 from '../images/hero1.png';
-
+import './MainHome.css';
+const heroimage = require('../images/hero1.jpg');
 const MainHome = () => {
   return (
     <main>
       <section className='hero1'>
-        <img src={hero1} alt='hero image 1 ' />
+        <img src={heroimage} alt='warehouse' />
       </section>
     </main>
   );

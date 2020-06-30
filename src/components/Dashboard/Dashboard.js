@@ -1,14 +1,32 @@
 import './dashboard.css';
 import React, { Component } from 'react';
+import ItemCardList from './ItemCardList';
+import AppContext from '../../AppContext';
 
-export default class Dashboard extends Component {
-  constructor(props) {
-    super(props);
+// const getAllItems = async () => {
+//   try {
+//     const response = await fetch(`${config.API_ENDPOINT}/items`);
+//     const jsonData = response.json();
+//     console.log(jsonData);
+//   } catch (err) {
+//     console.error(err.message);
+//   }
+// };
 
-    this.state = {};
+class Dashboard extends Component {
+  componentDidMount() {
+    this.context.getAllItems();
   }
-
   render() {
-    return <div></div>;
+    return (
+      <main>
+        <div className='dashboard'>
+          <ItemCardList />
+        </div>
+      </main>
+    );
   }
 }
+
+Dashboard.contextType = AppContext;
+export default Dashboard;

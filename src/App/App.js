@@ -3,19 +3,58 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import Header from '../components/Header';
 import MainHome from '../components/Home/MainHome';
+import Dashboard from '../components/Dashboard/Dashboard';
+import AppContext from '../AppContext';
+import config from '../config';
 
 export default class App extends React.Component {
   state = {
-    users: [],
     items: [],
+  };
+
+  getAllItems = () => {
+    Promise.all([fetch(`${config.API_ENDPOINT}/items`)])
+      .then(([itemResponse]) => {
+        if (!itemResponse.ok)
+          return itemResponse.json().then((e) => Promise.reject(e));
+
+        return Promise.all([itemResponse.json()]);
+      })
+      .then(([items]) => {
+        this.setState({ items });
+      })
+      .catch((error) => {
+        console.error({ error });
+      });
+  };
+
+  addItem = (item) => {
+    this.setState({
+      items: [...this.state.items, item],
+    });
+  };
+  deleteItem = (itemId) => {
+    this.setState({
+      items: this.state.items.filter((item) => item.id !== itemId),
+    });
   };
 
   render() {
     return (
-      <>
-        <Header />
-        <Route exact path='/' component={MainHome} />
-      </>
+      <AppContext.Provider
+        value={{
+          items: this.state.items,
+          addItem: this.addItem,
+          deleteItem: this.deleteItem,
+          getAllItems: this.getAllItems,
+        }}
+      >
+        <>
+          <Header />
+          <Route exact path='/' component={MainHome} />
+          <Route path='/dashboard' component={Dashboard} />
+        </>
+      </AppContext.Provider>
     );
   }
 }

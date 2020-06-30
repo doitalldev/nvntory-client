@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
-import Header from '../components/Header';
 import MainHome from '../components/Home/MainHome';
 import Dashboard from '../components/Dashboard/Dashboard';
 import AppContext from '../AppContext';
 import config from '../config';
+import AddItem from '../components/AddItem/AddItem';
 
 export default class App extends React.Component {
   state = {
@@ -50,9 +50,9 @@ export default class App extends React.Component {
         }}
       >
         <>
-          <Header />
           <Route exact path='/' component={MainHome} />
           <Route path='/dashboard' component={Dashboard} />
+          <Route path='/add-item' component={AddItem} />
         </>
       </AppContext.Provider>
     );

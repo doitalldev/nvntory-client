@@ -2,6 +2,7 @@ import './dashboard.css';
 import React, { Component } from 'react';
 import ItemCardList from './ItemCardList';
 import AppContext from '../../AppContext';
+import { DashboardHeader } from '../Header';
 
 // const getAllItems = async () => {
 //   try {
@@ -19,11 +20,14 @@ class Dashboard extends Component {
   }
   render() {
     return (
-      <main>
-        <div className='dashboard'>
-          <ItemCardList />
-        </div>
-      </main>
+      <>
+        <DashboardHeader />
+        <main>
+          <div className='dashboard'>
+            <ItemCardList />
+          </div>
+        </main>
+      </>
     );
   }
 }

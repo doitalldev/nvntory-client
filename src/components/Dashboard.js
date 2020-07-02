@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import config from '../config';
 // import ItemCardList from './ItemCardList';
 import ItemCard from './ItemCard';
+import { DashboardHeader } from './Header';
 // import EditItem from './EditItem';
 
 const Dashboard = () => {
@@ -37,11 +38,14 @@ const Dashboard = () => {
   console.log(items);
 
   return (
-    <ul>
-      {items.map((item) => (
-        <ItemCard item={item} key={item.id} deleteItem={deleteItem} />
-      ))}
-    </ul>
+    <>
+      <DashboardHeader />
+      <ul>
+        {items.map((item) => (
+          <ItemCard item={item} key={item.id} deleteItem={deleteItem} />
+        ))}
+      </ul>
+    </>
   );
 };
 

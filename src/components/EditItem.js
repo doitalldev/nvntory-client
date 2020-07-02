@@ -25,7 +25,7 @@ const EditItem = (props) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
-      window.location = '/';
+      window.location = '/dashboard';
     } catch (error) {
       console.error(error.message);
     }

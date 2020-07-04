@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../images/logo.png';
+import './header.css';
 // import { withRouter } from 'react-router';
 
 // const headerLinks = () => {
@@ -60,10 +61,14 @@ const DashboardHeader = () => {
         </div>
         <div className='add-item-container'>
           <div className='add-item'>
-            <a href='/add-item'>AddItem</a>
+            <a href='/add-item'>
+              <button className='button-add'>Add Item</button>
+            </a>
           </div>
-          <div className='logout'>
-            <a href='/logout'>Logout</a>
+          <div className='home'>
+            <a href='/'>
+              <button>Home</button>
+            </a>
           </div>
         </div>
       </nav>

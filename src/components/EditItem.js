@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import config from '../config';
+import './additem.css';
 
 import './modal.css';
 
@@ -20,7 +21,7 @@ const EditItem = (props) => {
     e.preventDefault();
     try {
       const body = { sku, name, description, price, cost, inventory };
-      await fetch(`${config.API_ENDPOINT}/items/${props.item.id}`, {
+      await fetch(`/api/items/${props.item.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
@@ -97,8 +98,8 @@ const EditItem = (props) => {
               onChange={(e) => setInventory(e.target.value)}
             />
             <button type='submit'>Submit</button>
+            <button onClick={props.handleClose}>Cancel</button>
           </form>
-          <button onClick={props.handleClose}>close</button>
         </section>
       </div>
     </>

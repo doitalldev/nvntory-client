@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+h1 {
+  text-align: center;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+form {
+  border-radius: 23px;
+  background: #f5f5f5;
+  box-shadow: 11px 11px 22px #acacac, -11px -11px 22px #ffffff;
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-top: 15px;
+}
+
+.cancel-button {
+}

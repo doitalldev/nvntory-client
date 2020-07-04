@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import config from '../config';
+// import config from '../config';
 // import ItemCardList from './ItemCardList';
 import ItemCard from './ItemCard';
 import { DashboardHeader } from './Header';
 // import EditItem from './EditItem';
+import './dashboard.css';
 
 const Dashboard = () => {
   const [items, setItems] = useState([]);
 
   const getItems = async () => {
     try {
-      const response = await fetch(`${config.API_ENDPOINT}/items`);
+      const response = await fetch(`/api/items`);
       const jsonData = await response.json();
       setItems(jsonData);
     } catch (error) {
@@ -21,7 +22,7 @@ const Dashboard = () => {
   //Delete Func
   const deleteItem = async (id) => {
     try {
-      const deleteItem = await fetch(`${config.API_ENDPOINT}/items/${id}`, {
+      const deleteItem = await fetch(`/api/items/${id}`, {
         method: 'DELETE',
       });
       setItems(items.filter((item) => item.id !== id));

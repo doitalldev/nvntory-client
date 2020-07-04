@@ -17,8 +17,6 @@ export default class App extends React.Component {
     return (
       <>
         <main>
-          {/* <AddItem />
-          <Dashboard /> */}
           <Route exact path='/' component={MainHome} />
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/add-item' component={AddItem} />

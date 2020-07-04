@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import config from '../config';
+import './additem.css';
 
 const AddItem = () => {
   const [sku, setSku] = useState('');
@@ -13,11 +14,13 @@ const AddItem = () => {
     e.preventDefault();
     try {
       const body = { sku, name, description, price, cost, inventory };
-      await fetch(`${config.API_ENDPOINT}/items`, {
+      const response = await fetch(`/api/items`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
+      console.log(response);
+
       window.location = '/dashboard';
     } catch (error) {
       console.error(error.message);
@@ -88,6 +91,10 @@ const AddItem = () => {
           onChange={(e) => setInventory(e.target.value)}
         />
         <button type='submit'>Submit</button>
+
+        <button type='button' onClick={() => (window.location = '/dashboard')}>
+          Cancel
+        </button>
       </form>
     </>
   );

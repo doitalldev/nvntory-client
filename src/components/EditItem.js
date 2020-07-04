@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import config from '../config';
 import './additem.css';
 
 import './modal.css';
@@ -69,7 +68,6 @@ const EditItem = (props) => {
             <input
               type='number'
               required
-              type='text'
               name='price'
               id='price'
               value={price}
@@ -81,7 +79,6 @@ const EditItem = (props) => {
             <input
               type='number'
               required
-              type='text'
               name='cost'
               id='cost'
               value={cost}
@@ -91,7 +88,6 @@ const EditItem = (props) => {
             <input
               type='number'
               required
-              type='text'
               name='inventory'
               id='inventory'
               value={inventory}

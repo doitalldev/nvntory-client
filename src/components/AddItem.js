@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import config from '../config';
 import './additem.css';
 
 const AddItem = () => {
@@ -62,7 +61,6 @@ const AddItem = () => {
         <input
           type='number'
           required
-          type='text'
           name='price'
           id='price'
           value={price}
@@ -74,7 +72,6 @@ const AddItem = () => {
         <input
           type='number'
           required
-          type='text'
           name='cost'
           id='cost'
           value={cost}
@@ -84,7 +81,6 @@ const AddItem = () => {
         <input
           type='number'
           required
-          type='text'
           name='inventory'
           id='inventory'
           value={inventory}

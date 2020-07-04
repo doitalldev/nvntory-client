@@ -32,5 +32,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "https://blooming-meadow-19540.herokuapp.com"
 }

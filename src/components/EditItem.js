@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import './additem.css';
-
 import './modal.css';
 
 const EditItem = (props) => {
-  console.log(props.item);
-
   const showHideClassName = props.show
     ? 'modal display-block'
     : 'modal display-none';
+
   const [sku, setSku] = useState(props.item.sku);
   const [name, setName] = useState(props.item.name);
   const [description, setDescription] = useState(props.item.description);

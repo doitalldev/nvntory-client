@@ -14,8 +14,8 @@ const Dashboard = () => {
       const response = await fetch(`/api/items`);
       const jsonData = await response.json();
       setItems(jsonData);
-    } catch (error) {
-      console.error(error.message);
+    } catch (err) {
+      console.error(err.message);
     }
   };
 
@@ -35,8 +35,6 @@ const Dashboard = () => {
   useEffect(() => {
     getItems();
   }, []);
-
-  console.log(items);
 
   return (
     <>

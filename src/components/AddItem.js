@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import config from '../config';
 import './additem.css';
 
 const AddItem = () => {
@@ -13,7 +14,7 @@ const AddItem = () => {
     e.preventDefault();
     try {
       const body = { sku, name, description, price, cost, inventory };
-      const response = await fetch(`/api/items`, {
+      const response = await fetch(`${config.API_ENDPOINT}/api/items`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

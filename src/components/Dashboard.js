@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import config from '../config';
+import config from '../config';
 // import ItemCardList from './ItemCardList';
 import ItemCard from './ItemCard';
 import { DashboardHeader } from './Header';
@@ -11,7 +11,19 @@ const Dashboard = () => {
 
   const getItems = async () => {
     try {
-      const response = await fetch(`/items`).then((res) => res.json());
+      let requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      };
+
+      // const response = await fetch('/items', requestOptions)
+      //   .then((response) => response.json())
+      //   .then((result) => console.log(result))
+      //   .catch((error) => console.log('error', error));
+
+      const response = await fetch(
+        `${config.API_ENDPOINT}/api/items`
+      ).then((res) => res.json());
       // const jsonData = await response.json();
       console.log(response);
 
@@ -26,7 +38,7 @@ const Dashboard = () => {
   //Delete Func
   const deleteItem = async (id) => {
     try {
-      const deleteItem = await fetch(`/items/${id}`, {
+      const deleteItem = await fetch(`${config.API_ENDPOINT}/api/items/${id}`, {
         method: 'DELETE',
       });
       setItems(items.filter((item) => item.id !== id));

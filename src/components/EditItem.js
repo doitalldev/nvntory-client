@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './additem.css';
 import './modal.css';
+import config from '../config';
 
 const EditItem = (props) => {
   const showHideClassName = props.show
@@ -18,7 +19,7 @@ const EditItem = (props) => {
     e.preventDefault();
     try {
       const body = { sku, name, description, price, cost, inventory };
-      await fetch(`/items/${props.item.id}`, {
+      await fetch(`${config.API_ENDPOINT}/items/${props.item.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

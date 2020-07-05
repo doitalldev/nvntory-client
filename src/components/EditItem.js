@@ -18,7 +18,7 @@ const EditItem = (props) => {
     e.preventDefault();
     try {
       const body = { sku, name, description, price, cost, inventory };
-      await fetch(`/api/items/${props.item.id}`, {
+      await fetch(`/items/${props.item.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

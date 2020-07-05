@@ -11,18 +11,22 @@ const Dashboard = () => {
 
   const getItems = async () => {
     try {
-      const response = await fetch(`/api/items`);
-      const jsonData = await response.json();
-      setItems(jsonData);
-    } catch (err) {
-      console.error(err.message);
+      const response = await fetch(`/items`).then((res) => res.json());
+      // const jsonData = await response.json();
+      console.log(response);
+
+      // console.log(jsonData);
+
+      setItems(response);
+    } catch (error) {
+      console.error(error.message);
     }
   };
 
   //Delete Func
   const deleteItem = async (id) => {
     try {
-      const deleteItem = await fetch(`/api/items/${id}`, {
+      const deleteItem = await fetch(`/items/${id}`, {
         method: 'DELETE',
       });
       setItems(items.filter((item) => item.id !== id));

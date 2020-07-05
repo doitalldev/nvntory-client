@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../images/logo.png';
+import './header.css';
 // import { withRouter } from 'react-router';
 
 // const headerLinks = () => {
@@ -37,15 +38,12 @@ const HomeHeader = () => {
     <header>
       <nav>
         <div className='logo-div'>
-          <img src={logo} alt='NVNTORY Logo' />
+          <a href='/'>
+            <img src={logo} alt='NVNTORY Logo' />
+          </a>
         </div>
-        <div className='login-signup-container'>
-          <div className='login'>
-            <a href='/login'>Log In</a>
-          </div>
-          <div className='signup'>
-            <a href='/signup'>Sign Up</a>
-          </div>
+        <div className='dashboard'>
+          <a href='/dashboard'>Dashboard</a>
         </div>
       </nav>
     </header>
@@ -57,14 +55,20 @@ const DashboardHeader = () => {
     <header>
       <nav>
         <div className='logo-div'>
-          <img src={logo} alt='NVNTORY Logo' />
+          <a href='/dashboard'>
+            <img src={logo} alt='NVNTORY Logo' />
+          </a>
         </div>
         <div className='add-item-container'>
           <div className='add-item'>
-            <a href='/add-item'>AddItem</a>
+            <a href='/add-item'>
+              <button className='button-add'>Add Item</button>
+            </a>
           </div>
-          <div className='logout'>
-            <a href='/logout'>Logout</a>
+          <div className='home'>
+            <a href='/'>
+              <button>Home</button>
+            </a>
           </div>
         </div>
       </nav>
@@ -72,4 +76,4 @@ const DashboardHeader = () => {
   );
 };
 
-export { HomeHeader, DashboardHeader };
+export { DashboardHeader, HomeHeader };

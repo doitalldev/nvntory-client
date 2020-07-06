@@ -43,7 +43,9 @@ const HomeHeader = () => {
           </a>
         </div>
         <div className='dashboard'>
-          <a href='/dashboard'>Dashboard</a>
+          <a href='/dashboard'>
+            <button>Go To Dashboard</button>
+          </a>
         </div>
       </nav>
     </header>

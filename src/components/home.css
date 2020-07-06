@@ -1,0 +1,22 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+h3 {
+  font-family: 'Noto Sans JP', sans-serif;
+  padding: 0 20px 20px 20px;
+  text-align: center;
+}
+.logo-div {
+  width: 75%;
+}
+html {
+  margin: auto;
+}
+@media only screen and (min-width: 600px) {
+  html {
+    width: 600px;
+  }
+}

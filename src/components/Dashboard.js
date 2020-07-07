@@ -16,18 +16,10 @@ const Dashboard = () => {
         headers: { 'Content-Type': 'application/json' },
       };
 
-      // const response = await fetch('/items', requestOptions)
-      //   .then((response) => response.json())
-      //   .then((result) => console.log(result))
-      //   .catch((error) => console.log('error', error));
-
       const response = await fetch(
         `${config.API_ENDPOINT}/api/items`
       ).then((res) => res.json());
       // const jsonData = await response.json();
-      console.log(response);
-
-      // console.log(jsonData);
 
       setItems(response);
     } catch (error) {
@@ -42,7 +34,6 @@ const Dashboard = () => {
         method: 'DELETE',
       });
       setItems(items.filter((item) => item.id !== id));
-      console.log(deleteItem);
     } catch (error) {
       console.error(error.message);
     }

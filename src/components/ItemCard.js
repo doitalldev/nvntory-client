@@ -7,17 +7,6 @@ class ItemCard extends React.Component {
     show: false,
   };
 
-  // //Delete Func
-  // const deleteItem = async (id) => {
-  //   try {
-  //     const deleteItem = await fetch(`${config.API_ENDPOINT}/items/${id}`, {
-  //       method: 'DELETE',
-  //     });
-  //     console.log(deleteItem);
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
   render() {
     const {
       id,

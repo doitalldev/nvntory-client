@@ -19,7 +19,6 @@ const AddItem = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
-      console.log(response);
 
       window.location = '/dashboard';
     } catch (error) {

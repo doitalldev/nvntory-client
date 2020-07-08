@@ -65,7 +65,8 @@ const EditItem = (props) => {
             />
             <label htmlFor='price'>Price: </label>
             <input
-              type='number'
+              type='text'
+              pattern='^\$\d{1,3}(,\d{3})*(\.\d+)?$'
               required
               name='price'
               id='price'
@@ -76,7 +77,7 @@ const EditItem = (props) => {
               Cost:
             </label>
             <input
-              type='number'
+              type='text'
               required
               name='cost'
               id='cost'

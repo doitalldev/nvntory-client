@@ -11,11 +11,6 @@ const Dashboard = () => {
 
   const getItems = async () => {
     try {
-      let requestOptions = {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      };
-
       const response = await fetch(
         `${config.API_ENDPOINT}/api/items`
       ).then((res) => res.json());

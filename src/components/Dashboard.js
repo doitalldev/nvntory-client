@@ -25,7 +25,7 @@ const Dashboard = () => {
   //Delete Func
   const deleteItem = async (id) => {
     try {
-      const deleteItem = await fetch(`${config.API_ENDPOINT}/api/items/${id}`, {
+      await fetch(`${config.API_ENDPOINT}/api/items/${id}`, {
         method: 'DELETE',
       });
       setItems(items.filter((item) => item.id !== id));

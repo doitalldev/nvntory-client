@@ -14,7 +14,7 @@ const AddItem = () => {
     e.preventDefault();
     try {
       const body = { sku, name, description, price, cost, inventory };
-      const response = await fetch(`${config.API_ENDPOINT}/api/items`, {
+      await fetch(`${config.API_ENDPOINT}/api/items`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

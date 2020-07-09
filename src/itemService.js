@@ -26,16 +26,19 @@ const deleteItem = (id) => {
 
 const getAllItems = () => {
   fetch(`${config.API_ENDPOINT}/api/items`)
-    .then((itemRes) => {
-      //   if (!itemRes.ok) return itemRes.json().then((e) => Promise.reject(e));
+    .then((res) => {
+      if (!res.ok) return res.json().then((e) => Promise.reject(e));
 
-      return itemRes.json();
+      return res.json();
     })
+    .then((data) => {
+      console.log(data);
+    })
+
     .catch((error) => {
       console.error({ error });
     });
 };
-
 export default {
   addItem,
   deleteItem,

@@ -11,11 +11,9 @@ import './dashboard.css';
 
 class Dashboard extends React.Component {
   static contextType = AppContext;
-
   componentDidMount() {
     this.context.getAllItems();
   }
-
   // const [items, setItems] = useState([]);
 
   // const getItems = async () => {

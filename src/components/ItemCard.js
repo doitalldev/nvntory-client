@@ -68,7 +68,7 @@ class ItemCard extends React.Component {
             Edit
           </button>
 
-          <button type='submit' onClick={() => this.context.deleteItem}>
+          <button type='submit' onClick={() => this.context.deleteItem()}>
             Delete
           </button>
         </div>

@@ -17,6 +17,8 @@ export default class App extends React.Component {
   };
 
   setItems = (items) => {
+    console.log(items);
+
     this.setState({ items });
   };
 
@@ -31,6 +33,7 @@ export default class App extends React.Component {
       this.setItems(this.context.items.filter((item) => item.id !== itemId))
     );
   };
+
   getAllItemsHandler = () => {
     ItemService.getAllItems().then((items) => this.setItems(items));
   };

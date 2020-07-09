@@ -1,15 +1,17 @@
 import React from 'react';
 // import config from '../config';
 import EditItem from './EditItem';
+import AppContext from '../AppContext';
 
 class ItemCard extends React.Component {
+  static contextType = AppContext;
   state = {
     show: false,
   };
 
   render() {
     const {
-      id,
+      // id,
       sku,
       name,
       description,
@@ -66,7 +68,7 @@ class ItemCard extends React.Component {
             Edit
           </button>
 
-          <button type='submit' onClick={() => this.props.deleteItem(id)}>
+          <button type='submit' onClick={() => this.context.deleteItem}>
             Delete
           </button>
         </div>
@@ -74,5 +76,4 @@ class ItemCard extends React.Component {
     );
   }
 }
-
 export default ItemCard;

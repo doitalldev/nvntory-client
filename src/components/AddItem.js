@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import config from '../config';
+import React, { useContext } from 'react';
 import './additem.css';
+import AppContext from '../AppContext';
 
 const AddItem = () => {
-  /* const [sku, setSku] = useState('');
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
-  const [cost, setCost] = useState('');
-  const [inventory, setInventory] = useState(''); */
+  const { addItem } = useContext(AppContext);
+  // const [sku, setSku] = useState('');
+  // const [name, setName] = useState('');
+  // const [description, setDescription] = useState('');
+  // const [price, setPrice] = useState('');
+  // const [cost, setCost] = useState('');
+  // const [inventory, setInventory] = useState('');
 
   const onSubmitForm = (e) => {
     e.preventDefault();
@@ -20,17 +21,7 @@ const AddItem = () => {
       cost: e.target['cost'].value,
       inventory: e.target['inventory'].value,
     };
-
-    fetch(`${config.API_ENDPOINT}/api/items`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(newItem),
-    }).then((res) => {
-      if (!res.ok) return res.json().then((e) => Promise.reject(e));
-      return res.json();
-    });
+    addItem(newItem);
   };
 
   // const onSubmitForm = async (e) => {
@@ -54,15 +45,15 @@ const AddItem = () => {
   return (
     <>
       <h1>Add New Item</h1>
-      <form onSubmit={onSubmitForm}>
+      <form onSubmit={(e) => onSubmitForm(e)}>
         <label htmlFor='sku'>SKU: </label>
         <input
           required
           type='text'
           name='sku'
           id='sku'
-          /*    value={sku}
-          onChange={(e) => setSku(e.target.value)} */
+          // value={sku}
+          // onChange={(e) => setSku(e.target.value)}
         />
         <label htmlFor='name'>Name: </label>
         <input
@@ -70,8 +61,8 @@ const AddItem = () => {
           type='text'
           name='name'
           id='name'
-          /*   value={name}
-          onChange={(e) => setName(e.target.value)} */
+          // value={name}
+          // onChange={(e) => setName(e.target.value)}
         />
         <label htmlFor='description'>Description: </label>
         <input
@@ -79,43 +70,43 @@ const AddItem = () => {
           type='text'
           name='description'
           id='description'
-          /*  value={description}
-          onChange={(e) => setDescription(e.target.value)} */
+          // value={description}
+          // onChange={(e) => setDescription(e.target.value)}
         />
         <label htmlFor='price'>Price: </label>
         <input
-          type='number'
+          // pattern='^\$\d{1,3}(,\d{3})*(\.\d+)?$'
+          type='text'
           required
           name='price'
           id='price'
-          /*  value={price}
-          onChange={(e) => setPrice(e.target.value)} */
+          // value={price}
+          // onChange={(e) => setPrice(e.target.value)}
         />
         <label required htmlFor='cost'>
           Cost:
         </label>
         <input
-          type='number'
+          // pattern='^\$\d{1,3}(,\d{3})*(\.\d+)?$'
+          type='text'
           required
           name='cost'
           id='cost'
-          /*    value={cost}
-          onChange={(e) => setCost(e.target.value)} */
+          // value={cost}
+          // onChange={(e) => setCost(e.target.value)}
         />
         <label htmlFor='inventory'>Inventory: </label>
         <input
-          type='number'
+          type='text'
           required
           name='inventory'
           id='inventory'
-          /*  value={inventory}
-          onChange={(e) => setInventory(e.target.value)} */
+          // value={inventory}
+          // onChange={(e) => setInventory(e.target.value)}
         />
         <button type='submit'>Submit</button>
 
-        <button
-          type='button' /* onClick={() => (window.location = '/dashboard')} */
-        >
+        <button type='button' onClick={() => (window.location = '/dashboard')}>
           Cancel
         </button>
       </form>

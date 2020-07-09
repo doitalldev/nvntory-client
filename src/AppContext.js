@@ -1,7 +1,9 @@
 import React from 'react';
+import itemService from './itemService';
 
 export default React.createContext({
   items: [],
-  addItem: () => {},
-  deleteItem: () => {},
+  addItem: itemService.addItem,
+  deleteItem: itemService.deleteItem,
+  getAllItems: itemService.getAllItems,
 });

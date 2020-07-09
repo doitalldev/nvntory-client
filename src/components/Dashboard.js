@@ -1,53 +1,63 @@
-import React, { useEffect, useState } from 'react';
-import config from '../config';
+import React from 'react';
+// import config from '../config';
 // import ItemCardList from './ItemCardList';
 import ItemCard from './ItemCard';
 import { DashboardHeader } from './Header';
+import AppContext from '../AppContext';
+
 // import EditItem from './EditItem';
+
 import './dashboard.css';
 
-const Dashboard = () => {
-  const [items, setItems] = useState([]);
+class Dashboard extends React.Component {
+  static contextType = AppContext;
 
-  const getItems = async () => {
-    try {
-      const response = await fetch(
-        `${config.API_ENDPOINT}/api/items`
-      ).then((res) => res.json());
-      // const jsonData = await response.json();
+  componentDidMount() {
+    this.context.getAllItems();
+  }
 
-      setItems(response);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
+  // const [items, setItems] = useState([]);
 
-  //Delete Func
-  const deleteItem = async (id) => {
-    try {
-      await fetch(`${config.API_ENDPOINT}/api/items/${id}`, {
-        method: 'DELETE',
-      });
-      setItems(items.filter((item) => item.id !== id));
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
+  // const getItems = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `${config.API_ENDPOINT}/api/items`
+  //     ).then((res) => res.json());
+  //     // const jsonData = await response.json();
 
-  useEffect(() => {
-    getItems();
-  }, []);
+  //     setItems(response);
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
 
-  return (
-    <>
-      <DashboardHeader />
-      <ul>
-        {items.map((item) => (
-          <ItemCard item={item} key={item.id} deleteItem={deleteItem} />
-        ))}
-      </ul>
-    </>
-  );
-};
+  // //Delete Func
+  // const deleteItem = async (id) => {
+  //   try {
+  //     await fetch(`${config.API_ENDPOINT}/api/items/${id}`, {
+  //       method: 'DELETE',
+  //     });
+  //     setItems(items.filter((item) => item.id !== id));
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getItems();
+  // }, []);
+  render() {
+    return (
+      <>
+        <DashboardHeader />
+        <ul>
+          {this.context.items.map((item) => (
+            <ItemCard item={item} key={item.id} />
+          ))}
+        </ul>
+      </>
+    );
+  }
+}
 
 export default Dashboard;

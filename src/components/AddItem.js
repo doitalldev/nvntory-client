@@ -9,6 +9,7 @@ const AddItem = () => {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
+    //Collects data for the new item
     const newItem = {
       sku: e.target['sku'].value,
       name: e.target['name'].value,
@@ -17,6 +18,7 @@ const AddItem = () => {
       cost: e.target['cost'].value,
       inventory: e.target['inventory'].value,
     };
+    //Submits the new item to context
     addItem(newItem);
 
     history.push('/dashboard');

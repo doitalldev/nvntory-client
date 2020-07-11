@@ -1,5 +1,5 @@
 import config from './config';
-
+//Add a new item, requires an object as parameter
 const addItem = (newItem) => {
   return fetch(`${config.API_ENDPOINT}/api/items`, {
     method: 'POST',
@@ -10,6 +10,7 @@ const addItem = (newItem) => {
   });
 };
 
+//Deletes an item from database, required an item id as parameter
 const deleteItem = (id) => {
   return fetch(`${config.API_ENDPOINT}/api/items/${id}`, {
     method: 'DELETE',
@@ -18,8 +19,7 @@ const deleteItem = (id) => {
   });
 };
 
-// this.context.setItems(this.context.items.filter((item) => item.id !== id));
-
+//Gets all items from database
 const getAllItems = () => {
   return fetch(`${config.API_ENDPOINT}/api/items`)
     .then((res) => {
@@ -33,6 +33,7 @@ const getAllItems = () => {
     });
 };
 
+//Edits an item, requires an object and item id as parameters
 const editItem = (editedItem, itemid) => {
   return fetch(`${config.API_ENDPOINT}/api/items/${itemid}`, {
     method: 'PATCH',

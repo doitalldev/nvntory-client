@@ -17,28 +17,30 @@ export default class App extends React.Component {
     items: [],
   };
 
+  //Once mounted, will fetch all items
   componentDidMount() {
     this.getAllItemsHandler();
   }
 
   setItems = (items) => {
-    console.log(items);
-
     this.setState({ items });
   };
 
+  //Adds new item using add item service
   addItemHandler = (newitem) => {
     ItemService.addItem(newitem).then((item) =>
       this.setItems([...this.state.items, item])
     );
   };
 
+  //Deletes item using deleteitem service
   deleteItemHandler = (itemId) => {
     ItemService.deleteItem(itemId).then(() =>
       this.setItems(this.state.items.filter((item) => item.id !== itemId))
     );
   };
 
+  //Get all items currently in database
   getAllItemsHandler = () => {
     ItemService.getAllItems().then((items) => {
       console.log(items);
@@ -47,6 +49,7 @@ export default class App extends React.Component {
     });
   };
 
+  //Edits item using edititem service
   editItemsHandler = (editedItem, itemid) => {
     ItemService.editItem(editedItem, itemid).then(() => {
       this.setItems([...this.state.items]);
@@ -54,6 +57,7 @@ export default class App extends React.Component {
   };
 
   render() {
+    //Sets context value object with corresponding handlers and items store
     const value = {
       items: this.state.items,
       addItem: this.addItemHandler,

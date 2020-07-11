@@ -9,20 +9,12 @@ const EditItem = (props) => {
   const thisitem = props.match.params.id;
   const thatitem = context.items.find((item) => item.id === Number(thisitem));
 
+  //Destructures this specific item
   const { id, sku, name, description, price, cost, inventory } = thatitem;
-
-  // console.log(thisitem);
-
-  // const history = useHistory();
-  // const context = useContext(AppContext);
-  console.log(props);
-  // const itemm = context.items;
-  // console.log(itemm);
-
-  // console.log(thatitem);
 
   const onSubmitForm = (e) => {
     e.preventDefault();
+    //Collects new data
     const editedItem = {
       sku: e.target['sku'].value,
       name: e.target['name'].value,
@@ -31,13 +23,14 @@ const EditItem = (props) => {
       cost: e.target['cost'].value,
       inventory: e.target['inventory'].value,
     };
+    //Submits the edited item and the items id
     context.editItem(editedItem, id);
 
     history.push('/dashboard');
   };
   return (
     <>
-      <h1>Edit </h1>
+      <h1>Edit Item: {name} </h1>
       <form onSubmit={(e) => onSubmitForm(e)}>
         <label htmlFor='sku'>SKU: </label>
         <input required type='text' name='sku' id='sku' defaultValue={sku} />

@@ -43,8 +43,6 @@ export default class App extends React.Component {
   //Get all items currently in database
   getAllItemsHandler = () => {
     ItemService.getAllItems().then((items) => {
-      console.log(items);
-
       this.setItems(items);
     });
   };

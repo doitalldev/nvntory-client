@@ -17,8 +17,6 @@ class Dashboard extends React.Component {
     this.context.getAllItems();
   }
   render() {
-    console.log(this.context.items);
-
     return (
       <>
         <DashboardHeader />

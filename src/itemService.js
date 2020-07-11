@@ -7,9 +7,6 @@ const addItem = (newItem) => {
       'content-type': 'application/json',
     },
     body: JSON.stringify(newItem),
-  }).then((res) => {
-    if (!res.ok) return res.json().then((e) => Promise.reject(e));
-    return res.json();
   });
 };
 
@@ -35,8 +32,19 @@ const getAllItems = () => {
       console.error({ error });
     });
 };
+
+const editItem = (editedItem, itemid) => {
+  return fetch(`${config.API_ENDPOINT}/api/items/${itemid}`, {
+    method: 'PATCH',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(editedItem),
+  });
+};
 export default {
   addItem,
   deleteItem,
   getAllItems,
+  editItem,
 };

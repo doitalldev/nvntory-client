@@ -6,4 +6,5 @@ export default React.createContext({
   addItem: itemService.addItem,
   deleteItem: itemService.deleteItem,
   getAllItems: itemService.getAllItems,
+  editItem: itemService.editItem,
 });

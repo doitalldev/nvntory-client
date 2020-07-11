@@ -21,7 +21,8 @@ ul {
   justify-content: space-evenly;
   margin-top: 10px;
 }
-.card-buttons button {
+
+.card-buttons > {
   width: 35%;
 }
 .sku,

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './additem.css';
 import AppContext from '../AppContext';
 import { useHistory } from 'react-router-dom';
+
 const AddItem = () => {
   const history = useHistory();
   const { addItem } = useContext(AppContext);
@@ -53,10 +54,7 @@ const AddItem = () => {
         <input type='number' required name='inventory' id='inventory' />
         <button type='submit'>Submit</button>
 
-        <button
-          type='button'
-          onClick={() => this.props.history.push('/dashboard')}
-        >
+        <button type='button' onClick={() => history.push('/dashboard')}>
           Cancel
         </button>
       </form>

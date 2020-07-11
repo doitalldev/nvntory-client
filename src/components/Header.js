@@ -1,20 +1,21 @@
 import React from 'react';
 import logo from '../images/logo.png';
 import './header.css';
+import { Link } from 'react-router-dom';
 
 const HomeHeader = () => {
   return (
     <header>
       <nav>
         <div className='logo-div'>
-          <a href='/'>
+          <Link to={`/`}>
             <img src={logo} alt='NVNTORY Logo' />
-          </a>
+          </Link>
         </div>
         <div className='dashboard'>
-          <a href='/dashboard'>
+          <Link to={`/dashboard`}>
             <button>Go To Dashboard</button>
-          </a>
+          </Link>
         </div>
       </nav>
     </header>
@@ -26,20 +27,20 @@ const DashboardHeader = () => {
     <header>
       <nav>
         <div className='logo-div'>
-          <a href='/dashboard'>
+          <Link to={`/dashboard`}>
             <img src={logo} alt='NVNTORY Logo' />
-          </a>
+          </Link>
         </div>
         <div className='add-item-container'>
           <div className='add-item'>
-            <a href='/add-item'>
+            <Link to={`/add-item`}>
               <button className='button-add'>Add Item</button>
-            </a>
+            </Link>
           </div>
           <div className='home'>
-            <a href='/'>
+            <Link to={`/`}>
               <button>Home</button>
-            </a>
+            </Link>
           </div>
         </div>
       </nav>

@@ -10,6 +10,7 @@ import './App.css';
 import AddItem from '../components/AddItem';
 import Dashboard from '../components/Dashboard';
 import MainHome from '../components/MainHome';
+import EditItem from '../components/EditItem';
 
 export default class App extends React.Component {
   state = {
@@ -46,6 +47,12 @@ export default class App extends React.Component {
     });
   };
 
+  editItemsHandler = (editedItem, itemid) => {
+    ItemService.editItem(editedItem, itemid).then(() => {
+      this.setItems([...this.state.items]);
+    });
+  };
+
   render() {
     const value = {
       items: this.state.items,
@@ -53,6 +60,7 @@ export default class App extends React.Component {
       setItems: this.setItems,
       deleteItem: this.deleteItemHandler,
       getAllItems: this.getAllItemsHandler,
+      editItem: this.editItemsHandler,
     };
 
     return (
@@ -61,6 +69,10 @@ export default class App extends React.Component {
           <Route exact path='/' component={MainHome} />
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/add-item' component={AddItem} />
+          <Route
+            path='/edit-item/:id'
+            render={(props) => <EditItem {...props} />}
+          />
         </main>
       </AppContext.Provider>
     );

@@ -1,8 +1,8 @@
 import React from 'react';
 // import config from '../config';
-import EditItem from './EditItem';
+// import EditItem from './EditItem';
 import AppContext from '../AppContext';
-
+import { withRouter, Link } from 'react-router-dom';
 class ItemCard extends React.Component {
   static contextType = AppContext;
   state = {
@@ -20,15 +20,15 @@ class ItemCard extends React.Component {
       inventory,
     } = this.props.item;
 
-    const showEditItem = (e) => {
-      this.setState({
-        show: true,
-      });
-    };
-    const hideEditItem = (e) => {
-      this.setState({ show: false });
-      window.location = '/dashboard';
-    };
+    // const showEditItem = (e) => {
+    //   this.setState({
+    //     show: true,
+    //   });
+    // };
+    // const hideEditItem = (e) => {
+    //   this.setState({ show: false });
+    //   this.props.history.push('/dashboard');
+    // };
     return (
       <div className='card'>
         <div className='title'>
@@ -58,16 +58,16 @@ class ItemCard extends React.Component {
           {inventory}
         </div>
 
-        <EditItem
+        {/* <EditItem
           item={this.props.item}
           show={this.state.show}
           handleClose={hideEditItem}
-        />
+        /> */}
         <div className='card-buttons'>
-          <button type='button' onClick={showEditItem}>
-            Edit
-          </button>
-
+          <Link to={`/edit-item/${id}`}>
+            <button type='button'>Edit Item</button>
+          </Link>
+          {/* // onClick={showEditItem}> // Edit */}
           <button type='submit' onClick={() => this.context.deleteItem(id)}>
             Delete
           </button>
@@ -76,4 +76,4 @@ class ItemCard extends React.Component {
     );
   }
 }
-export default ItemCard;
+export default withRouter(ItemCard);

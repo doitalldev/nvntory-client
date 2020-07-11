@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 // import config from '../config';
 // import ItemCardList from './ItemCardList';
 import ItemCard from './ItemCard';
@@ -11,40 +12,13 @@ import './dashboard.css';
 
 class Dashboard extends React.Component {
   static contextType = AppContext;
+
   componentDidMount() {
     this.context.getAllItems();
   }
-  // const [items, setItems] = useState([]);
-
-  // const getItems = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `${config.API_ENDPOINT}/api/items`
-  //     ).then((res) => res.json());
-  //     // const jsonData = await response.json();
-
-  //     setItems(response);
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
-
-  // //Delete Func
-  // const deleteItem = async (id) => {
-  //   try {
-  //     await fetch(`${config.API_ENDPOINT}/api/items/${id}`, {
-  //       method: 'DELETE',
-  //     });
-  //     setItems(items.filter((item) => item.id !== id));
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getItems();
-  // }, []);
   render() {
+    console.log(this.context.items);
+
     return (
       <>
         <DashboardHeader />
@@ -58,4 +32,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);

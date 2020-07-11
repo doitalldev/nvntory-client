@@ -1,15 +1,10 @@
 import React, { useContext } from 'react';
 import './additem.css';
 import AppContext from '../AppContext';
-
+import { useHistory } from 'react-router-dom';
 const AddItem = () => {
+  const history = useHistory();
   const { addItem } = useContext(AppContext);
-  // const [sku, setSku] = useState('');
-  // const [name, setName] = useState('');
-  // const [description, setDescription] = useState('');
-  // const [price, setPrice] = useState('');
-  // const [cost, setCost] = useState('');
-  // const [inventory, setInventory] = useState('');
 
   const onSubmitForm = (e) => {
     e.preventDefault();
@@ -22,95 +17,51 @@ const AddItem = () => {
       inventory: e.target['inventory'].value,
     };
     addItem(newItem);
+
+    history.push('/dashboard');
   };
-
-  // const onSubmitForm = async (e) => {
-  //   console.log(e);
-
-  //   e.preventDefault();
-  //   try {
-  //     const body = { sku, name, description, price, cost, inventory };
-  //     await fetch(`${config.API_ENDPOINT}/api/items`, {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify(body),
-  //     });
-
-  //     window.location = '/dashboard';
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
 
   return (
     <>
       <h1>Add New Item</h1>
       <form onSubmit={(e) => onSubmitForm(e)}>
         <label htmlFor='sku'>SKU: </label>
-        <input
-          required
-          type='text'
-          name='sku'
-          id='sku'
-          // value={sku}
-          // onChange={(e) => setSku(e.target.value)}
-        />
+        <input required type='text' name='sku' id='sku' />
         <label htmlFor='name'>Name: </label>
-        <input
-          required
-          type='text'
-          name='name'
-          id='name'
-          // value={name}
-          // onChange={(e) => setName(e.target.value)}
-        />
+        <input required type='text' name='name' id='name' />
         <label htmlFor='description'>Description: </label>
-        <input
-          required
-          type='text'
-          name='description'
-          id='description'
-          // value={description}
-          // onChange={(e) => setDescription(e.target.value)}
-        />
+        <input required type='text' name='description' id='description' />
         <label htmlFor='price'>Price: </label>
         <input
           // pattern='^\$\d{1,3}(,\d{3})*(\.\d+)?$'
-          type='text'
+          type='number'
           required
           name='price'
           id='price'
-          // value={price}
-          // onChange={(e) => setPrice(e.target.value)}
         />
         <label required htmlFor='cost'>
           Cost:
         </label>
         <input
           // pattern='^\$\d{1,3}(,\d{3})*(\.\d+)?$'
-          type='text'
+          type='number'
           required
           name='cost'
           id='cost'
-          // value={cost}
-          // onChange={(e) => setCost(e.target.value)}
         />
         <label htmlFor='inventory'>Inventory: </label>
-        <input
-          type='text'
-          required
-          name='inventory'
-          id='inventory'
-          // value={inventory}
-          // onChange={(e) => setInventory(e.target.value)}
-        />
+        <input type='number' required name='inventory' id='inventory' />
         <button type='submit'>Submit</button>
 
-        <button type='button' onClick={() => (window.location = '/dashboard')}>
+        <button
+          type='button'
+          onClick={() => this.props.history.push('/dashboard')}
+        >
           Cancel
         </button>
       </form>
     </>
   );
 };
+
 export default AddItem;

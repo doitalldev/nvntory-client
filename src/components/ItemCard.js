@@ -11,7 +11,7 @@ class ItemCard extends React.Component {
 
   render() {
     const {
-      // id,
+      id,
       sku,
       name,
       description,
@@ -68,7 +68,7 @@ class ItemCard extends React.Component {
             Edit
           </button>
 
-          <button type='submit' onClick={() => this.context.deleteItem()}>
+          <button type='submit' onClick={() => this.context.deleteItem(id)}>
             Delete
           </button>
         </div>

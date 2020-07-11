@@ -1,7 +1,7 @@
 import config from './config';
 
-const addItem = (newItem) =>
-  fetch(`${config.API_ENDPOINT}/api/items`, {
+const addItem = (newItem) => {
+  return fetch(`${config.API_ENDPOINT}/api/items`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -11,21 +11,20 @@ const addItem = (newItem) =>
     if (!res.ok) return res.json().then((e) => Promise.reject(e));
     return res.json();
   });
-
-const deleteItem = (id) => {
-  try {
-    fetch(`${config.API_ENDPOINT}/api/items/${id}`, {
-      method: 'DELETE',
-    });
-
-    // this.context.setItems(this.context.items.filter((item) => item.id !== id));
-  } catch (error) {
-    console.error(error.message);
-  }
 };
 
+const deleteItem = (id) => {
+  return fetch(`${config.API_ENDPOINT}/api/items/${id}`, {
+    method: 'DELETE',
+  }).catch((error) => {
+    console.error({ error });
+  });
+};
+
+// this.context.setItems(this.context.items.filter((item) => item.id !== id));
+
 const getAllItems = () => {
-  fetch(`${config.API_ENDPOINT}/api/items`)
+  return fetch(`${config.API_ENDPOINT}/api/items`)
     .then((res) => {
       if (!res.ok) return res.json().then((e) => Promise.reject(e));
 

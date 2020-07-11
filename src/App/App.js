@@ -16,26 +16,34 @@ export default class App extends React.Component {
     items: [],
   };
 
+  componentDidMount() {
+    this.getAllItemsHandler();
+  }
+
   setItems = (items) => {
     console.log(items);
 
     this.setState({ items });
   };
 
-  addItemHandler = (item) => {
-    ItemService.addItem(item).then((item) =>
+  addItemHandler = (newitem) => {
+    ItemService.addItem(newitem).then((item) =>
       this.setItems([...this.state.items, item])
     );
   };
 
   deleteItemHandler = (itemId) => {
     ItemService.deleteItem(itemId).then(() =>
-      this.setItems(this.context.items.filter((item) => item.id !== itemId))
+      this.setItems(this.state.items.filter((item) => item.id !== itemId))
     );
   };
 
   getAllItemsHandler = () => {
-    ItemService.getAllItems().then((items) => this.setItems(items));
+    ItemService.getAllItems().then((items) => {
+      console.log(items);
+
+      this.setItems(items);
+    });
   };
 
   render() {

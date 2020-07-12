@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import './additem.css';
-import AppContext from '../AppContext';
+import AppContext from '../../AppContext';
 import { withRouter } from 'react-router-dom';
 
-const AddItem = (props) => {
+const AddItem = ({ history }, props) => {
   // const history = useHistory();
   const { addItem } = useContext(AppContext);
 
@@ -19,8 +19,9 @@ const AddItem = (props) => {
       inventory: e.target['inventory'].value,
     };
     //Submits the new item to context
+
     addItem(newItem);
-    props.history.push('/dashboard');
+    history.push('/dashboard');
   };
 
   return (

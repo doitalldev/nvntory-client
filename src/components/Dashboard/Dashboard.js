@@ -2,9 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router';
 // import config from '../config';
 // import ItemCardList from './ItemCardList';
-import ItemCard from './ItemCard';
-import { DashboardHeader } from './Header';
-import AppContext from '../AppContext';
+import ItemCard from '../ItemCard/ItemCard';
+import { DashboardHeader } from '../Header/Header';
+import AppContext from '../../AppContext';
 
 // import EditItem from './EditItem';
 

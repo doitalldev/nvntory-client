@@ -1,7 +1,7 @@
 import React from 'react';
 // import config from '../config';
 // import EditItem from './EditItem';
-import AppContext from '../AppContext';
+import AppContext from '../../AppContext';
 import { withRouter, Link } from 'react-router-dom';
 class ItemCard extends React.Component {
   static contextType = AppContext;

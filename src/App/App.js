@@ -7,10 +7,10 @@ import ItemService from '../itemService';
 import './App.css';
 
 /* Components */
-import AddItem from '../components/AddItem';
-import Dashboard from '../components/Dashboard';
+import AddItem from '../components/AddItem/AddItem';
+import Dashboard from '../components/Dashboard/Dashboard';
 import MainHome from '../components/MainHome';
-import EditItem from '../components/EditItem';
+import EditItem from '../components/EditItem/EditItem';
 
 export default class App extends React.Component {
   state = {
@@ -30,7 +30,8 @@ export default class App extends React.Component {
   // TODO: Get page to render with new item after submittal
   addItemHandler = (newitem) => {
     ItemService.addItem(newitem).then((item) =>
-      this.setItems([...this.state.items, item])
+      // this.setItems([...this.state.items, item])
+      console.log(item)
     );
   };
 
@@ -51,7 +52,7 @@ export default class App extends React.Component {
   //Edits item using edititem service
   editItemsHandler = (editedItem, itemid) => {
     ItemService.editItem(editedItem, itemid).then(() => {
-      this.setItems([...this.state.items]);
+      this.setState([...this.state.items]);
     });
   };
 

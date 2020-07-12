@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import './additem.css';
-import AppContext from '../AppContext';
+import '../AddItem/additem.css';
+import AppContext from '../../AppContext';
 import { useHistory } from 'react-router-dom';
 
 const EditItem = (props) => {

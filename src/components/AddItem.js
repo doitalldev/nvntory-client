@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import './additem.css';
 import AppContext from '../AppContext';
-import { useHistory } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const AddItem = () => {
-  const history = useHistory();
+const AddItem = (props) => {
+  // const history = useHistory();
   const { addItem } = useContext(AppContext);
 
   const onSubmitForm = (e) => {
@@ -20,8 +20,7 @@ const AddItem = () => {
     };
     //Submits the new item to context
     addItem(newItem);
-
-    history.push('/dashboard');
+    props.history.push('/dashboard');
   };
 
   return (
@@ -56,7 +55,7 @@ const AddItem = () => {
         <input type='number' required name='inventory' id='inventory' />
         <button type='submit'>Submit</button>
 
-        <button type='button' onClick={() => history.push('/dashboard')}>
+        <button type='button' onClick={() => props.history.push('/dashboard')}>
           Cancel
         </button>
       </form>
@@ -64,4 +63,4 @@ const AddItem = () => {
   );
 };
 
-export default AddItem;
+export default withRouter(AddItem);

@@ -27,6 +27,7 @@ export default class App extends React.Component {
   };
 
   //Adds new item using add item service
+  // TODO: Get page to render with new item after submittal
   addItemHandler = (newitem) => {
     ItemService.addItem(newitem).then((item) =>
       this.setItems([...this.state.items, item])

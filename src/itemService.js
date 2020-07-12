@@ -1,7 +1,7 @@
 import config from './config';
 //Add a new item, requires an object as parameter
 const addItem = (newItem) => {
-  return fetch(`${config.API_ENDPOINT}/api/items`, {
+  fetch(`${config.API_ENDPOINT}/api/items`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',

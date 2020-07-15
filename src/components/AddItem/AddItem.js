@@ -20,8 +20,7 @@ const AddItem = ({ history }, props) => {
     };
     //Submits the new item to context
 
-    addItem(newItem);
-    history.push('/dashboard');
+    addItem(newItem).then(() => history.push('/dashboard'));
   };
 
   return (
@@ -56,7 +55,7 @@ const AddItem = ({ history }, props) => {
         <input type='number' required name='inventory' id='inventory' />
         <button type='submit'>Submit</button>
 
-        <button type='button' onClick={() => props.history.push('/dashboard')}>
+        <button type='button' onClick={() => history.push('/dashboard')}>
           Cancel
         </button>
       </form>

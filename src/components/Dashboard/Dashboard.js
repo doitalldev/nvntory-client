@@ -15,9 +15,13 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.context.getAllItems();
+
+    console.log('Dashboard componentDidMount ran');
   }
 
   render() {
+    if (this.context.isLoading) return <div>loading...</div>;
+
     return (
       <>
         <DashboardHeader />

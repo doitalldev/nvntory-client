@@ -7,4 +7,6 @@ export default React.createContext({
   deleteItem: itemService.deleteItem,
   getAllItems: itemService.getAllItems,
   editItem: itemService.editItem,
+  isFetching: true,
+  isLoading: true,
 });

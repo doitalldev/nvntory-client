@@ -24,7 +24,7 @@ const getAllItems = () => {
   return fetch(`${config.API_ENDPOINT}/api/items`)
     .then((res) => {
       if (!res.ok) return res.json().then((e) => Promise.reject(e));
-
+      console.log('getItems ran');
       return res.json();
     })
 

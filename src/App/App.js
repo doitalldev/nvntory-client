@@ -23,15 +23,15 @@ export default class App extends React.Component {
   }
 
   setItems = (items) => {
-    this.setState({ items });
+    this.setState({ items, isLoading: false });
+    console.log('Set Items ran');
   };
 
   //Adds new item using add item service
   // TODO: Get page to render with new item after submittal
   addItemHandler = (newitem) => {
-    ItemService.addItem(newitem).then((item) =>
-      // this.setItems([...this.state.items, item])
-      console.log(item)
+    return ItemService.addItem(newitem).then((item) =>
+      this.setItems([...this.state.items, item])
     );
   };
 

@@ -38,5 +38,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://blooming-meadow-19540.herokuapp.com"
+  "proxy": "https://blooming-meadow-19540.herokuapp.com",
+  "devDependencies": {
+    "react-test-renderer": "^16.13.1"
+  }
 }
